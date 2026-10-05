@@ -1,0 +1,16 @@
+method:
+  name: ttc
+  topk: 3
+  memory_size: 16
+  lam: 0.03
+
+data:
+  task: cross_dataset
+  backbone: ViT-B16
+  datasets: [caltech101, dtd, eurosat, fgvc, flowers102, food101, imagenet, oxfordiiitpet, stanfordcars, sun397, ucf101]
+  feature_root: ./features
+  coop_seeds: [1, 2, 3]
+
+run:
+  seeds: [3407]
+  output_dir: outputs/cross_dataset

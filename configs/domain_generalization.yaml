@@ -1,0 +1,15 @@
+method:
+  name: ttc
+  topk: 3
+  memory_size: 16
+  lam: 0.03
+
+data:
+  task: domain_generalization
+  backbone: ViT-B16
+  datasets: [ImageNetA, ImageNetR, ImageNetSketch, ImageNetV2]
+  aug: 10
+
+run:
+  seeds: [3407, 3408, 3409]
+  output_dir: outputs/domain_generalization

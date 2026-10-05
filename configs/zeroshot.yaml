@@ -1,0 +1,14 @@
+method:
+  name: ttc
+  topk: 3
+  memory_size: 16
+  lam: 0.03
+
+data:
+  task: zeroshot
+  backbone: ViT-B16
+  datasets: [caltech101, dtd, eurosat, fgvc, flowers102, food101, imagenet, oxfordiiitpet, stanfordcars, sun397, ucf101]
+
+run:
+  seeds: [3407, 3408, 3409]
+  output_dir: outputs/zeroshot
