@@ -136,20 +136,6 @@ python -m scripts.run --config zeroshot --data.datasets dtd,eurosat --run.seeds 
 python -m scripts.summarize outputs
 ```
 
-<details>
-<summary><b>Configs</b></summary>
-
-| config | paper |
-| --- | --- |
-| `zeroshot` | Table 1 (`--data.backbone RN50` or `ViT-B16`) |
-| `domain_generalization` | Table 2, 10-view rows (`--data.aug 0` for the single-view rows; INet from `zeroshot`) |
-| `fewshot` | Figure 2 |
-| `base_to_novel` | Table 3 |
-| `cross_dataset` | Table 4 |
-| `zeroshot`, `domain_generalization` with `--data.backbone ViT-B32` or `ViT-L14` | Tables 15, 16 |
-
-</details>
-
 ## Citation
 
 ```bibtex
