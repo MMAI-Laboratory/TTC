@@ -5,7 +5,7 @@
 <div align="left">
 
 [![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)]()
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?logo=arxiv&logoColor=white)]()
+[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2610.06147)
 [![Data](https://img.shields.io/badge/Data-TTC--features-ffd21e?logo=huggingface&logoColor=ffd21e)](https://huggingface.co/datasets/SoongE/TTC-features)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green?logo=apache&logoColor=white)](LICENSE)
 
