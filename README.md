@@ -3,12 +3,10 @@
 **TTC verifies the top-*k* candidates instead of adjusting the prediction.** It inserts the test feature into each candidate's class memory and predicts the class whose subspace shifts least.
 
 <div align="left">
-
-[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)]()
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2610.06147)
-[![Data](https://img.shields.io/badge/Data-TTC--features-ffd21e?logo=huggingface&logoColor=ffd21e)](https://huggingface.co/datasets/SoongE/TTC-features)
-[![License](https://img.shields.io/badge/License-Apache_2.0-green?logo=apache&logoColor=white)](LICENSE)
-
+  <a href="https://neurips.cc/Conferences/2026"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SoongE/SoongE/badge/neurips-2026-dark.svg"><img src="https://raw.githubusercontent.com/SoongE/SoongE/badge/neurips-2026.svg" alt="NeurIPS 2026"></picture></a>
+  <a href="https://arxiv.org/abs/2610.06147"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SoongE/SoongE/badge/arxiv-2610.06147-dark.svg"><img src="https://raw.githubusercontent.com/SoongE/SoongE/badge/arxiv-2610.06147.svg" alt="arXiv 2610.06147"></picture></a>
+  <a href="https://huggingface.co/datasets/SoongE/TTC-features"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SoongE/SoongE/badge/dataset-dark.svg"><img src="https://raw.githubusercontent.com/SoongE/SoongE/badge/dataset.svg" alt="Dataset"></picture></a>
+  <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SoongE/SoongE/badge/license-apache-2.0-dark.svg"><img src="https://raw.githubusercontent.com/SoongE/SoongE/badge/license-apache-2.0.svg" alt="License: Apache 2.0"></picture></a>
 </div>
 
 <p align="center">
