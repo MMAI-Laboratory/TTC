@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import math
 import random
 from pathlib import Path
 
@@ -49,16 +50,43 @@ def run_one(cfg: Config, subtask: str, dataset: str, shots: int, coop_seed: int,
                                              clip_weights))
 
 
+def _read_completed_runs(out: Path) -> set[tuple[str, ...]]:
+    identity_fields = FIELDS[:-1]
+    done = set()
+    with out.open() as f:
+        reader = csv.DictReader(f, strict=True)
+        row_number = 1
+        try:
+            header = reader.fieldnames
+            if header != FIELDS:
+                raise SystemExit(
+                    f"{out}: row 1 has columns {header}, expected {FIELDS}; use another --run.output_dir"
+                )
+            row_number = 2
+            for row in reader:
+                if None in row or None in row.values():
+                    raise SystemExit(f"{out}: row {row_number}: expected {len(FIELDS)} columns")
+                # Zero-shot runs intentionally serialize an empty CoOp seed.
+                for field in identity_fields:
+                    if field != "coop_seed" and not row[field].strip():
+                        raise SystemExit(f"{out}: row {row_number}: missing {field!r}")
+                try:
+                    accuracy = float(row["accuracy"])
+                except ValueError:
+                    accuracy = math.nan
+                if not math.isfinite(accuracy):
+                    raise SystemExit(f"{out}: row {row_number}: accuracy must be a finite number")
+                done.add(tuple(row[field] for field in identity_fields))
+                row_number += 1
+        except csv.Error as exc:
+            raise SystemExit(f"{out}: row {row_number}: invalid CSV: {exc}") from exc
+    return done
+
+
 def evaluate(cfg: Config) -> Path:
     out = Path(cfg.run.output_dir) / "results.csv"
     out.parent.mkdir(parents=True, exist_ok=True)
-    done = set()
-    if out.exists() and out.stat().st_size:
-        with out.open() as f:
-            reader = csv.DictReader(f)
-            if reader.fieldnames != FIELDS:
-                raise SystemExit(f"{out} has columns {reader.fieldnames}, expected {FIELDS}; use another --run.output_dir")
-            done = {tuple(r[k] for k in FIELDS[:-1]) for r in reader}
+    done = _read_completed_runs(out) if out.exists() and out.stat().st_size else set()
 
     coop_seeds = [None] if cfg.data.task in ("zeroshot", "domain_generalization") else cfg.data.coop_seeds
     for subtask, shots in task_runs(cfg):
